@@ -43,9 +43,15 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (file && jobDescription) {
-      onAnalyze(file, jobDescription);
+    if (!file) {
+      alert('Please upload your resume (PDF) first.');
+      return;
     }
+    if (!jobDescription) {
+      alert('Please paste a job description to analyze against.');
+      return;
+    }
+    onAnalyze(file, jobDescription);
   };
 
   return (
@@ -135,7 +141,7 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
           <button 
             type="submit" 
             className={`btn btn-primary ${isAnalyzing ? 'animate-pulse-glow' : ''}`}
-            disabled={!file || !jobDescription || isAnalyzing}
+            disabled={isAnalyzing}
             style={{ width: '100%', maxWidth: '300px', padding: '16px', fontSize: '1.1rem' }}
           >
             {isAnalyzing ? (

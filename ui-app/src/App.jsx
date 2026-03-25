@@ -18,7 +18,9 @@ function App() {
     formData.append('job_description', jobDescription);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const apiUrl = import.meta.env.PROD 
+        ? 'https://ai-resume-backend-j3on.onrender.com' 
+        : 'http://localhost:8000';
       const response = await fetch(`${apiUrl}/match-resume/`, {
         method: 'POST',
         body: formData,
@@ -32,7 +34,7 @@ function App() {
       setResults(data);
     } catch (err) {
       console.error('Analysis failed:', err);
-      setError('Failed to analyze resume. Please assure the backend server is running on port 8000 and try again.');
+      setError('Failed to analyze resume. Please ensure the backend is reachable and try again.');
     } finally {
       setIsAnalyzing(false);
     }

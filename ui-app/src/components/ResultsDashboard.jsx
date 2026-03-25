@@ -83,9 +83,18 @@ const ResultsDashboard = ({ results, onReset }) => {
         <button 
           onClick={onReset}
           className="btn"
-          style={{ background: 'var(--bg-secondary)', color: 'var(--text-primary)', border: '1px solid var(--glass-border)' }}
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '8px', 
+            background: 'var(--bg-secondary)', 
+            color: 'var(--text-primary)', 
+            border: '1px solid var(--glass-border)',
+            padding: '10px 20px'
+          }}
         >
-          <RefreshCw size={16} /> New Analysis
+          <RefreshCw size={18} />
+          <span>Back to Upload / New Analysis</span>
         </button>
       </div>
 
